@@ -53,9 +53,14 @@ def main():
         start = time.monotonic_ns()
         p = subprocess.Popen(cmd, cwd=ROOT.parent)
         running.append((e, p, start))
-    for e, p, start in running:
-        p.wait()
-        rows.append([a.run_id, e["name"], e["kind"], p.pid, start, time.monotonic_ns()])
+    ends = {}
+    while len(ends) < len(running):                       # record each job's REAL exit time (not the time we got to wait on it)
+        for i, (e, p, start) in enumerate(running):
+            if i not in ends and p.poll() is not None:
+                ends[i] = time.monotonic_ns()
+        time.sleep(0.02)
+    for i, (e, p, start) in enumerate(running):
+        rows.append([a.run_id, e["name"], e["kind"], p.pid, start, ends[i]])
 
     new = not os.path.exists(a.labels)
     Path(a.labels).parent.mkdir(parents=True, exist_ok=True)

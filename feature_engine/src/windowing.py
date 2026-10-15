@@ -36,12 +36,12 @@ def _modal_comm(frames: list[pd.DataFrame]) -> pd.Series:
     if not rows:
         return pd.Series(dtype=object)
     allc = pd.concat(rows)
-    return allc.groupby("pid")["comm"].agg(lambda s: s.mode().iloc[0] if not s.mode().empty else "?")
+    return allc.groupby("pid")["comm"].agg(lambda s: s.mode().iloc[0])
 
 
 def feature_columns(df: pd.DataFrame) -> list[str]:
     """Numeric model inputs (everything except identifiers/labels)."""
-    skip = set(ID_COLS) | {"label", "scenario"}
+    skip = set(ID_COLS) | {"label", "scenario", "wl_start_ns"}
     return [c for c in df.columns if c not in skip and pd.api.types.is_numeric_dtype(df[c])]
 
 

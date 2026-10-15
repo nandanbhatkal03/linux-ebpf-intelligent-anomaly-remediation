@@ -1,0 +1,3 @@
+arm,scenario,detect_s,first_action,first_action_s,action_latency_ms,anomaly_lifetime_s,victim_tput_before,victim_tput_during,victim_tput_after,victim_tput_during_min,false_alert_before_onset
+observe,runaway_cpu,2.7691587330000402,restrict,2.7707926630000657,7.780897,30.132529877000024,999.76,51.8,873.5,8,False
+active,runaway_cpu,-2.431961513000033,restrict,-2.429416614000047,5.192136,3.9259213199998158,1077.36,1527.5,1526.0645161290322,1322,True

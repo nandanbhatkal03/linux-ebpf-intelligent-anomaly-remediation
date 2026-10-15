@@ -1,0 +1,152 @@
+{
+ "run_id": "active",
+ "model": "autoencoder",
+ "t1": 1.2610232058824506,
+ "t2": 1.891534808823676,
+ "policy": {
+  "suspicious_windows": 2,
+  "critical_windows": 2,
+  "escalate_suspicious": 6,
+  "step_windows": 2,
+  "recover_windows": 5,
+  "suspend_hold_s": 3.0,
+  "realert_s": 10.0,
+  "max_level": "terminate",
+  "dry_run": false,
+  "restart_on_terminate": false,
+  "warmup_s": 3.0
+ },
+ "events": [
+  {
+   "t": 2.7078999892182765e-05,
+   "event": "launch",
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 7380,
+   "launch_ns": 1375314944073
+  },
+  {
+   "t": 15.090286080999931,
+   "event": "launch",
+   "name": "runaway_cpu",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 7381,
+   "launch_ns": 1390408452497
+  },
+  {
+   "t": 19.582367250999823,
+   "event": "alert",
+   "pid": 7380,
+   "ok": true,
+   "ratio": 1.8767090268740083,
+   "latency_ms": 2.45866,
+   "detail": "alert logged"
+  },
+  {
+   "t": 19.585146575999943,
+   "event": "restrict",
+   "pid": 7380,
+   "ok": true,
+   "ratio": 1.8767090268740083,
+   "latency_ms": 5.082313,
+   "detail": "nice=19 on 1 threads"
+  },
+  {
+   "t": 22.568038486999967,
+   "event": "alert",
+   "pid": 7381,
+   "ok": true,
+   "ratio": 2.2314390256033363,
+   "latency_ms": 2.987345,
+   "detail": "alert logged"
+  },
+  {
+   "t": 22.570583385999953,
+   "event": "restrict",
+   "pid": 7381,
+   "ok": true,
+   "ratio": 2.2314390256033363,
+   "latency_ms": 5.192136,
+   "detail": "nice=19 on 1 threads"
+  },
+  {
+   "t": 23.66512088699983,
+   "event": "suspend",
+   "pid": 7380,
+   "ok": true,
+   "ratio": 1.5692845164338167,
+   "latency_ms": 3.781589,
+   "detail": "SIGSTOP x1"
+  },
+  {
+   "t": 25.506883991999985,
+   "event": "suspend",
+   "pid": 7381,
+   "ok": true,
+   "ratio": 2.1337456938070005,
+   "latency_ms": 3.422149,
+   "detail": "SIGSTOP x1"
+  },
+  {
+   "t": 26.860153443999934,
+   "event": "terminate",
+   "pid": 7380,
+   "ok": true,
+   "detail": "SIGTERM"
+  },
+  {
+   "t": 27.060276457999862,
+   "event": "exited",
+   "pid": 7380,
+   "name": "cpu_workload",
+   "code": -15
+  },
+  {
+   "t": 28.725737181999875,
+   "event": "terminate",
+   "pid": 7381,
+   "ok": true,
+   "detail": "SIGTERM"
+  },
+  {
+   "t": 28.925921319999816,
+   "event": "exited",
+   "pid": 7381,
+   "name": "runaway_cpu",
+   "code": -15
+  }
+ ],
+ "detections": 36,
+ "launched": {
+  "7380": {
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 7380,
+   "launch_ns": 1375314944073,
+   "exit_ns": 1402374492892
+  },
+  "7381": {
+   "name": "runaway_cpu",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 7381,
+   "launch_ns": 1390408452497,
+   "exit_ns": 1404240163707
+  }
+ }
+}

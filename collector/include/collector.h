@@ -39,6 +39,7 @@ struct loader {
 	int stats_fd;               /* bpf_enable_stats(RUN_TIME)            */
 	int ncpu;
 	int page_fault_enabled;
+	int runtime_acct;           /* 1 = sched_stat_runtime CPU accounting, 0 = switch-delta fallback */
 };
 
 /* loader.c */

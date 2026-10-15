@@ -34,9 +34,17 @@ stop_mon() {
 }
 trap stop_mon EXIT
 
-CONFIGS="baseline proc_polling ebpf_syscall ebpf_process_resource ebpf_full"
+STRACE_DIV="${STRACE_DIV:-40}"      # strace is ~10-100x slower: run proportionally fewer iterations (metrics are per-call)
+CONFIGS="baseline proc_polling strace ebpf_syscall ebpf_process_resource ebpf_full"
 for ((t=1; t<=TRIALS; t++)); do
   for cfg in $CONFIGS; do            # interleaved to spread drift across configs
+    if [[ "$cfg" == "strace" ]]; then     # strace wraps the benchmark process (that is how it is used)
+      S="strace -f -qq -o /dev/null"
+      echo "$cfg,$t,sys_ns_per_call,$($S "$BENCH" sys $((SYS_N/STRACE_DIV)))" >> "$OUT"
+      echo "$cfg,$t,io_ns_per_read,$($S "$BENCH" io $((IO_N/STRACE_DIV)))"   >> "$OUT"
+      echo "$cfg,$t,cpu_seconds,$($S "$BENCH" cpu "$CPU_N")"                 >> "$OUT"
+      echo "trial $t/$TRIALS  strace done" >&2; continue
+    fi
     start_mon "$cfg"
     echo "$cfg,$t,sys_ns_per_call,$("$BENCH" sys "$SYS_N")" >> "$OUT"
     echo "$cfg,$t,io_ns_per_read,$("$BENCH" io "$IO_N")"   >> "$OUT"

@@ -1,0 +1,152 @@
+{
+ "run_id": "active",
+ "model": "autoencoder",
+ "t1": 1.2610232058824506,
+ "t2": 1.891534808823676,
+ "policy": {
+  "suspicious_windows": 2,
+  "critical_windows": 2,
+  "escalate_suspicious": 6,
+  "step_windows": 2,
+  "recover_windows": 5,
+  "suspend_hold_s": 3.0,
+  "realert_s": 10.0,
+  "max_level": "terminate",
+  "dry_run": false,
+  "restart_on_terminate": false,
+  "warmup_s": 3.0
+ },
+ "events": [
+  {
+   "t": 2.797199999804434e-05,
+   "event": "launch",
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 7395,
+   "launch_ns": 1498172647005
+  },
+  {
+   "t": 15.173271571999976,
+   "event": "launch",
+   "name": "cpu_pressure",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 7396,
+   "launch_ns": 1513344513538
+  },
+  {
+   "t": 17.70711455600008,
+   "event": "alert",
+   "pid": 7395,
+   "ok": true,
+   "ratio": 2.7442965142904767,
+   "latency_ms": 6.925879,
+   "detail": "alert logged"
+  },
+  {
+   "t": 17.711202703000026,
+   "event": "restrict",
+   "pid": 7395,
+   "ok": true,
+   "ratio": 2.7442965142904767,
+   "latency_ms": 11.462175,
+   "detail": "nice=19 on 1 threads"
+  },
+  {
+   "t": 20.787430297000128,
+   "event": "suspend",
+   "pid": 7395,
+   "ok": true,
+   "ratio": 4.967075769478623,
+   "latency_ms": 16.925322,
+   "detail": "SIGSTOP x1"
+  },
+  {
+   "t": 21.840805477999993,
+   "event": "alert",
+   "pid": 7396,
+   "ok": true,
+   "ratio": 2.706736792032943,
+   "latency_ms": 5.180578,
+   "detail": "alert logged"
+  },
+  {
+   "t": 21.84752939200007,
+   "event": "restrict",
+   "pid": 7396,
+   "ok": true,
+   "ratio": 2.706736792032943,
+   "latency_ms": 8.16858,
+   "detail": "nice=19 on 1 threads"
+  },
+  {
+   "t": 23.91231106400005,
+   "event": "terminate",
+   "pid": 7395,
+   "ok": true,
+   "detail": "SIGTERM"
+  },
+  {
+   "t": 24.112418651000098,
+   "event": "exited",
+   "pid": 7395,
+   "name": "cpu_workload",
+   "code": -15
+  },
+  {
+   "t": 24.621168499000078,
+   "event": "suspend",
+   "pid": 7396,
+   "ok": true,
+   "ratio": 5.506469850354461,
+   "latency_ms": 6.322706,
+   "detail": "SIGSTOP x1"
+  },
+  {
+   "t": 27.780331755000134,
+   "event": "terminate",
+   "pid": 7396,
+   "ok": true,
+   "detail": "SIGTERM"
+  },
+  {
+   "t": 27.98076750600012,
+   "event": "exited",
+   "pid": 7396,
+   "name": "cpu_pressure",
+   "code": -15
+  }
+ ],
+ "detections": 31,
+ "launched": {
+  "7395": {
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 7395,
+   "launch_ns": 1498172647005,
+   "exit_ns": 1522278402231
+  },
+  "7396": {
+   "name": "cpu_pressure",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 7396,
+   "launch_ns": 1513344513538,
+   "exit_ns": 1526146741641
+  }
+ }
+}

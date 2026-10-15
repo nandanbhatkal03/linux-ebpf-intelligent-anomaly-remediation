@@ -1,0 +1,10 @@
+{
+ "duration_s": 90.0,
+ "targets": 3,
+ "windows_scored": 267,
+ "alerts": 0,
+ "restrict": 0,
+ "suspend": 0,
+ "terminate": 0,
+ "destructive_false_actions": 0
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-1792056782",
+  "kernel": "6.18.44-fc-v114",
+  "arch": "x86_64",
+  "ncpu": 1,
+  "window_ms": 500,
+  "filter_pids": 1,
+  "monitors": {"process": 1, "syscall": 1, "resource": 1},
+  "page_fault_probe": 1,
+  "cpu_accounting": "sched_stat_runtime",
+  "ringbuf_kb": 4096,
+  "start_monotonic_ns": 165179150972,
+  "end_monotonic_ns": 185925604294,
+  "start_realtime_ns": 1792056782637995255
+}

@@ -1,0 +1,121 @@
+{
+ "run_id": "observe",
+ "model": "autoencoder",
+ "t1": 1.2610232058824506,
+ "t2": 1.891534808823676,
+ "policy": {
+  "suspicious_windows": 2,
+  "critical_windows": 2,
+  "escalate_suspicious": 6,
+  "step_windows": 2,
+  "recover_windows": 5,
+  "suspend_hold_s": 3.0,
+  "realert_s": 10.0,
+  "max_level": "terminate",
+  "dry_run": true,
+  "restart_on_terminate": false,
+  "warmup_s": 3.0
+ },
+ "events": [
+  {
+   "t": 2.9415999961202033e-05,
+   "event": "launch",
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 14349,
+   "launch_ns": 1343495881455
+  },
+  {
+   "t": 15.20722574299998,
+   "event": "launch",
+   "name": "process_burst",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 14350,
+   "launch_ns": 1358712406027
+  },
+  {
+   "t": 19.71305631799987,
+   "event": "alert",
+   "pid": 14349,
+   "ok": true,
+   "ratio": 1.0071530652163998,
+   "latency_ms": 3.037515,
+   "detail": "alert logged"
+  },
+  {
+   "t": 21.780872848999934,
+   "event": "alert",
+   "pid": 14350,
+   "ok": true,
+   "ratio": 6.977005480545363,
+   "latency_ms": 7.459116,
+   "detail": "alert logged"
+  },
+  {
+   "t": 21.782341796999845,
+   "event": "restrict",
+   "pid": 14350,
+   "ok": true,
+   "ratio": 6.977005480545363,
+   "latency_ms": 8.954709,
+   "detail": "dry-run: not executed"
+  },
+  {
+   "t": 24.761320537999836,
+   "event": "suspend",
+   "pid": 14350,
+   "ok": true,
+   "ratio": 5.392099300690064,
+   "latency_ms": 2.952166,
+   "detail": "dry-run: not executed"
+  },
+  {
+   "t": 27.831311326999867,
+   "event": "terminate",
+   "pid": 14350,
+   "ok": true,
+   "ratio": 5.357565277308926,
+   "latency_ms": 2.273417,
+   "detail": "dry-run: not executed"
+  },
+  {
+   "t": 55.458097425999995,
+   "event": "exited",
+   "pid": 14350,
+   "name": "process_burst",
+   "code": 0
+  }
+ ],
+ "detections": 100,
+ "launched": {
+  "14349": {
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 60.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 14349,
+   "launch_ns": 1343495881455
+  },
+  "14350": {
+   "name": "process_burst",
+   "kind": "anomalous",
+   "duration": 40.0,
+   "intensity": "high",
+   "start": 15.0,
+   "restart": false,
+   "pid": 14350,
+   "launch_ns": 1358712406027,
+   "exit_ns": 1398953268343
+  }
+ }
+}

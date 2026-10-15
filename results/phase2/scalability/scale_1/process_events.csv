@@ -1,0 +1,4 @@
+ts_ns,event,pid,ppid,uid,gid,value,comm
+103907182748,fork,195,97,0,0,197,python3
+103907441617,exec,197,195,0,0,197,python3
+123918021581,exit,197,195,0,0,9,python3

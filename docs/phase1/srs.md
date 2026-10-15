@@ -13,14 +13,14 @@ Users: OS/security researchers, sysadmins, evaluators. Status column: **P1** = i
 | FR-05 | Transfer events kernel->user efficiently | P1 | ring buffer + drained maps |
 | FR-06 | Aggregate by process and time window | P1 | `windowing.py` |
 | FR-07 | Compute behavioural features | P1 | `feature_engine/src/*` |
-| FR-08 | Anomaly score: >= 1 baseline + >= 1 ML method | P1 baseline / P2 ML | `ml/statistical/baseline.py` |
-| FR-09 | Compare detection models | P2 | `ml/evaluation/` |
-| FR-10 | Alerts at configurable thresholds | P2 | |
-| FR-11 | Configurable response policies | P2 | `remediation/policy_engine` |
-| FR-12 | Remediate authorised test processes only | P2 | `remediation/` |
-| FR-13 | Audit log of anomalies and actions | P2 | |
+| FR-08 | Anomaly score: >= 1 baseline + >= 1 ML method | **done** | `ml/models.py` (statistical, Isolation Forest, autoencoder) |
+| FR-09 | Compare detection models | **done** | `ml/evaluate.py`, `ml/operating_point.py` |
+| FR-10 | Alerts at configurable thresholds | **done** | `remediation/policy_engine.py`, `configs/policy.yaml` |
+| FR-11 | Configurable response policies | **done** | `configs/policy.yaml` |
+| FR-12 | Remediate authorised test processes only | **done** | `remediation/safety.py` allow-list + start-time check |
+| FR-13 | Audit log of anomalies and actions | **done** | `remediation/audit.py`, `storage/db.py` |
 | FR-14 | Record CPU, memory, throughput, latency measurements | P1 | `collector_metrics.csv`, `bpf_prog_stats.csv`, `benchmarks/` |
-| FR-15 | Visualisation of results. **Optional** (was "shall"); must not be a dependency of the core pipeline | P2 | `dashboard/` |
+| FR-15 | Visualisation of results. **Optional** (was "shall"); not a dependency of the core pipeline | **done** | `dashboard/report.py` (static HTML) |
 
 ## 2. Non-functional requirements
 | ID | Requirement |

@@ -2,6 +2,7 @@
 # One labelled run: collector + workload plan -> raw data -> labelled features.
 #   sudo scripts/run_experiment.sh <run_id> [plan.yaml] [window_ms]
 set -euo pipefail
+mount | grep -q tracefs || mount -t tracefs nodev /sys/kernel/tracing 2>/dev/null || true
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RUN="${1:?usage: run_experiment.sh <run_id> [plan.yaml] [window_ms]}"
 PLAN="${2:-$ROOT/workloads/configs/workload_config.yaml}"

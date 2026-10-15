@@ -89,12 +89,12 @@ static void write_meta(const struct cfg *c, const struct loader *ld,
 	fprintf(f, "{\n  \"run_id\": \"%s\",\n  \"kernel\": \"%s\",\n  \"arch\": \"%s\",\n"
 		   "  \"ncpu\": %d,\n  \"window_ms\": %d,\n  \"filter_pids\": %d,\n"
 		   "  \"monitors\": {\"process\": %d, \"syscall\": %d, \"resource\": %d},\n"
-		   "  \"page_fault_probe\": %d,\n  \"ringbuf_kb\": %d,\n"
+		   "  \"page_fault_probe\": %d,\n  \"cpu_accounting\": \"%s\",\n  \"ringbuf_kb\": %d,\n"
 		   "  \"start_monotonic_ns\": %llu,\n  \"end_monotonic_ns\": %llu,\n"
 		   "  \"start_realtime_ns\": %llu\n}\n",
 		c->run_id, u.release, u.machine, ld->ncpu, c->window_ms, c->npids,
 		c->enable_proc, c->enable_sys, c->enable_res, ld->page_fault_enabled,
-		c->ringbuf_kb, (unsigned long long)t_start, (unsigned long long)t_end,
+		ld->runtime_acct ? "sched_stat_runtime" : "switch_delta", c->ringbuf_kb, (unsigned long long)t_start, (unsigned long long)t_end,
 		(unsigned long long)rt_start);
 	fclose(f);
 }

@@ -1,0 +1,2 @@
+collector running: window=500 ms, outdir=results/phase2/live/process_burst/active/collector, cpus=1 (filtered)
+done: 4751 process events, outdir=results/phase2/live/process_burst/active/collector

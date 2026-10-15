@@ -74,6 +74,9 @@ int loader_open(const struct cfg *cfg, struct loader *ld)
 		bpf_map__reuse_fd(ld->res->maps.targets, ld->targets_fd);
 		ld->page_fault_enabled = tracepoint_exists("exceptions/page_fault_user");
 		bpf_program__set_autoload(ld->res->progs.on_page_fault, ld->page_fault_enabled);
+		ld->runtime_acct = tracepoint_exists("sched/sched_stat_runtime");
+		bpf_program__set_autoload(ld->res->progs.on_runtime, ld->runtime_acct);
+		ld->res->rodata->accrue_in_switch = !ld->runtime_acct;
 		if ((err = resource_monitor_bpf__load(ld->res)))
 			return err;
 	}
@@ -121,6 +124,8 @@ int loader_prog_stats(const struct loader *ld, FILE *out)
 	}
 	if (ld->res) {
 		prog_row(out, "on_switch", ld->res->progs.on_switch);
+		if (ld->runtime_acct)
+			prog_row(out, "on_runtime", ld->res->progs.on_runtime);
 		if (ld->page_fault_enabled)
 			prog_row(out, "on_page_fault", ld->res->progs.on_page_fault);
 	}

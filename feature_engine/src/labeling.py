@@ -30,6 +30,7 @@ def apply_labels(features: pd.DataFrame, proc: pd.DataFrame, labels: pd.DataFram
     df = features.copy()
     df["label"] = -1
     df["scenario"] = ""
+    df["wl_start_ns"] = 0
     if labels is None or labels.empty or df.empty:
         return df
     parent = lineage(proc)
@@ -49,4 +50,5 @@ def apply_labels(features: pd.DataFrame, proc: pd.DataFrame, labels: pd.DataFram
         if s < w.end_ns and e > w.start_ns:       # window overlaps the workload interval
             df.iat[i, df.columns.get_loc("label")] = 1 if w.kind == "anomalous" else 0
             df.iat[i, df.columns.get_loc("scenario")] = w.workload
+            df.iat[i, df.columns.get_loc("wl_start_ns")] = int(w.start_ns)
     return df

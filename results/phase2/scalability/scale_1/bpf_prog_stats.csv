@@ -1,0 +1,8 @@
+program,run_cnt,run_time_ns,avg_ns_per_run
+on_sys_enter,7390,2219240,300.3
+on_fork,1,33320,33320.0
+on_exec,1,1067,1067.0
+on_exit,1,17806,17806.0
+on_switch,1339,2558355,1910.6
+on_runtime,1872,1313848,701.8
+on_page_fault,1835,230884,125.8

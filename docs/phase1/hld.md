@@ -10,9 +10,10 @@ workloads (normal / controlled anomalous)
                                 |           collector_metrics, bpf_prog_stats, meta.json
                       feature_engine (Python) -> features.csv (+ labels from workload runner)
                                 |
-                         ml/ (P1: robust-z baseline; P2: Isolation Forest, autoencoder)
+                         ml/ (statistical, Isolation Forest, autoencoder; user space only)
                                 |
-                  policy engine -> remediation engine (P2)  ->  results / dashboard (P2)
+                  runtime/pipeline: live detector -> policy engine -> safety gate -> remediation engine
+                                -> audit.jsonl + SQLite -> dashboard/report.py (optional)
 ```
 
 | Component | Responsibility | Key decision |

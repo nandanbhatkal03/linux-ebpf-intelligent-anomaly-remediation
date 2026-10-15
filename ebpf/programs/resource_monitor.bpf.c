@@ -23,6 +23,11 @@ struct {
 	__type(value, struct cpu_val);
 } cpu_stats SEC(".maps");
 
+/* 1 = charge on-CPU time at sched_switch (fallback); 0 = sched_stat_runtime does it. Switch-time charging
+ * misses a CPU hog that is never switched out (e.g. a lone spinning process), so the loader prefers
+ * the sched_stat_runtime tracepoint, which fires on every scheduler tick and context switch. */
+const volatile __u8 accrue_in_switch = 1;
+
 static __always_inline struct cpu_val *get_val(__u32 tgid, struct task_struct *t)
 {
 	struct cpu_val *v = bpf_map_lookup_elem(&cpu_stats, &tgid);
@@ -63,10 +68,25 @@ int BPF_PROG(on_switch, bool preempt, struct task_struct *prev,
 	struct cpu_val *v = get_val(tgid, prev);
 	if (!v)
 		return 0;
-	v->on_cpu_ns += now - prev_ts;
+	if (accrue_in_switch)
+		v->on_cpu_ns += now - prev_ts;
 	v->switches++;
 	if (preempt)
 		v->invol_switches++;
+	return 0;
+}
+
+/* Exact runtime accounting: runs on every update_curr() of the running task. */
+SEC("?tracepoint/sched/sched_stat_runtime")
+int on_runtime(struct trace_event_raw_sched_stat_runtime *ctx)
+{
+	__u32 tgid = bpf_get_current_pid_tgid() >> 32;
+
+	if (!is_monitored(tgid))
+		return 0;
+	struct cpu_val *v = get_val(tgid, NULL);
+	if (v)
+		v->on_cpu_ns += ctx->runtime;
 	return 0;
 }
 

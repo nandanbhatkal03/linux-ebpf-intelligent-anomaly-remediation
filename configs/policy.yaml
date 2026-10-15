@@ -1,0 +1,14 @@
+# Default experimental policy: non-destructive actions first (package section 13).
+# Score thresholds T1/T2 come from the trained model bundle (leave-one-run-out normal scores).
+policy:
+  suspicious_windows: 2     # consecutive windows >= T1 before an alert
+  critical_windows: 2       # consecutive windows >= T2 -> critical
+  escalate_suspicious: 6    # ... or this many consecutive windows >= T1
+  step_windows: 2           # windows between ladder rungs while still anomalous
+  recover_windows: 5        # normal windows before restrictions are lifted
+  suspend_hold_s: 3.0       # a suspended process is terminated after this long (if max_level allows)
+  realert_s: 10.0
+  max_level: terminate      # alert | restrict | suspend | terminate
+  dry_run: false
+  restart_on_terminate: false
+  warmup_s: 3.0             # start-up transients cause most false positives of the statistical/IF models (see phase2 report)

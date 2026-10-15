@@ -1,0 +1,16 @@
+model,scenario,instances,detected,latency_ms
+autoencoder,cpu_pressure,6,1.0,2929.6089345
+autoencoder,io_burst,6,1.0,1927.9038135
+autoencoder,memory_pressure,6,1.0,2929.7869095
+autoencoder,process_burst,6,1.0,1929.7581504999998
+autoencoder,syscall_burst,6,1.0,1929.683763
+isolation_forest,cpu_pressure,6,0.0,
+isolation_forest,io_burst,6,0.0,
+isolation_forest,memory_pressure,6,0.6666666666666666,2933.0012340000003
+isolation_forest,process_burst,6,0.6666666666666666,3932.994992
+isolation_forest,syscall_burst,6,0.0,
+statistical,cpu_pressure,6,0.0,
+statistical,io_burst,6,0.0,
+statistical,memory_pressure,6,0.8333333333333334,2932.552337
+statistical,process_burst,6,1.0,1929.7581504999998
+statistical,syscall_burst,6,1.0,1929.683763

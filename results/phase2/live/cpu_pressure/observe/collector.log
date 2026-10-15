@@ -1,0 +1,2 @@
+collector running: window=500 ms, outdir=results/phase2/live/cpu_pressure/observe/collector, cpus=1 (filtered)
+done: 6 process events, outdir=results/phase2/live/cpu_pressure/observe/collector

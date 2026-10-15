@@ -1,0 +1,90 @@
+{
+ "run_id": "normal_only",
+ "model": "autoencoder",
+ "t1": 1.2610232058824506,
+ "t2": 1.891534808823676,
+ "policy": {
+  "suspicious_windows": 2,
+  "critical_windows": 2,
+  "escalate_suspicious": 6,
+  "step_windows": 2,
+  "recover_windows": 5,
+  "suspend_hold_s": 3.0,
+  "realert_s": 10.0,
+  "max_level": "terminate",
+  "dry_run": false,
+  "restart_on_terminate": false,
+  "warmup_s": 3.0
+ },
+ "events": [
+  {
+   "t": 2.138400000006868e-05,
+   "event": "launch",
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 103,
+   "launch_ns": 12052218841
+  },
+  {
+   "t": 2.138400000006868e-05,
+   "event": "launch",
+   "name": "mixed_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 104,
+   "launch_ns": 12053656527
+  },
+  {
+   "t": 2.138400000006868e-05,
+   "event": "launch",
+   "name": "io_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "low",
+   "start": 0.0,
+   "restart": false,
+   "pid": 105,
+   "launch_ns": 12060169643
+  }
+ ],
+ "detections": 267,
+ "launched": {
+  "103": {
+   "name": "cpu_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 103,
+   "launch_ns": 12052218841
+  },
+  "104": {
+   "name": "mixed_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "medium",
+   "start": 0.0,
+   "restart": false,
+   "pid": 104,
+   "launch_ns": 12053656527
+  },
+  "105": {
+   "name": "io_workload",
+   "kind": "normal",
+   "duration": 90.0,
+   "intensity": "low",
+   "start": 0.0,
+   "restart": false,
+   "pid": 105,
+   "launch_ns": 12060169643
+  }
+ }
+}

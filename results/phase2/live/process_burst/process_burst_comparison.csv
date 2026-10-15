@@ -1,0 +1,3 @@
+arm,scenario,detect_s,first_action,first_action_s,action_latency_ms,anomaly_lifetime_s,victim_tput_before,victim_tput_during,victim_tput_after,victim_tput_during_min,false_alert_before_onset
+observe,process_burst,6.780872848999934,restrict,6.7823417969998445,8.954709,40.458097425999995,789.9375,610.275,857.0,417,False
+active,process_burst,6.620564614000159,restrict,6.623334558000124,5.37742,12.965253517000065,895.8,602.2307692307693,859.375,365,False
