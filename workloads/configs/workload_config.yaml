@@ -1,0 +1,10 @@
+# Example plan consumed by workloads/run_workloads.py.
+# start_after: seconds after the plan starts. Entries may overlap (concurrent).
+# kind: normal | anomalous  (becomes the ground-truth label of that process tree).
+schedule:
+  - {name: cpu_workload,    kind: normal,    duration: 40, intensity: medium, start_after: 0}
+  - {name: mixed_workload,  kind: normal,    duration: 40, intensity: medium, start_after: 0}
+  - {name: io_workload,     kind: normal,    duration: 40, intensity: low,    start_after: 0}
+  - {name: cpu_pressure,    kind: anomalous, duration: 8,  intensity: medium, start_after: 10}
+  - {name: process_burst,   kind: anomalous, duration: 8,  intensity: medium, start_after: 20}
+  - {name: syscall_burst,   kind: anomalous, duration: 8,  intensity: medium, start_after: 30}

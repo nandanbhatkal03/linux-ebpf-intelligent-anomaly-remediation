@@ -1,0 +1,2 @@
+collector: {window_ms: 1000, ringbuf_kb: 4096}
+features: feature_engine/config/feature_config.yaml

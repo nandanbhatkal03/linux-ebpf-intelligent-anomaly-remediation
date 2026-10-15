@@ -1,0 +1,3 @@
+# Phase-II. Allow-list only; non-destructive actions first.
+allowlist: []        # explicit test PIDs / workload names
+levels: [observe, alert, restrict, suspend, terminate, restart]

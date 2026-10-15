@@ -1,0 +1,26 @@
+# Feature-engine configuration (Objective 3).
+window_ms: 1000              # target window; must be a multiple of the collector window
+min_activity: 1              # drop (window,pid) rows with fewer syscalls AND no CPU time
+temporal:
+  history: 5                 # windows used for rolling statistics
+  base_features: [sys_total, cpu_util, n_fork, n_exec, sys_entropy]
+# First matching rule wins. Edit to change what counts as e.g. "memory".
+syscall_categories:
+  process: [clone, clone3, fork, vfork, execve, execveat, exit, exit_group, wait4, waitid,
+            kill, tkill, tgkill, getpid, getppid, gettid, setsid, setpgid, getpgid, getpgrp,
+            prctl, arch_prctl, set_tid_address, prlimit64, setrlimit, getrlimit, getrusage,
+            sched_*, setuid, setgid, setresuid, setresgid, setreuid, setregid, capset, capget,
+            ptrace, rseq, unshare, setns, seccomp, getuid, geteuid, getgid, getegid]
+  memory:  [mmap, munmap, mprotect, mremap, brk, madvise, mlock*, munlock*, mincore, msync,
+            memfd_create, userfaultfd, process_vm_*, set_mempolicy, get_mempolicy, mbind, remap_file_pages]
+  network: [socket, connect, accept, accept4, bind, listen, sendto, recvfrom, sendmsg, recvmsg,
+            sendmmsg, recvmmsg, shutdown, getsockname, getpeername, socketpair, setsockopt, getsockopt]
+  ipc:     [futex, futex_*, shm*, msg*, sem*, mq_*, eventfd*, signalfd*, pipe, pipe2]
+  file:    [read, write, open, openat, openat2, close, close_range, stat, fstat, lstat, newfstatat,
+            statx, lseek, pread64, pwrite64, readv, writev, preadv*, pwritev*, access, faccessat*,
+            dup, dup2, dup3, fsync, fdatasync, ftruncate, truncate, rename*, unlink*, mkdir*, rmdir,
+            creat, link*, symlink*, readlink*, chmod, fchmod*, chown, fchown*, lchown, getdents*,
+            getcwd, chdir, fchdir, fcntl, ioctl, sendfile, copy_file_range, splice, flock, fallocate,
+            utime*, futimesat, statfs, fstatfs, "*xattr", select, pselect6, poll, ppoll, epoll_*, inotify_*,
+            fanotify_*, sync, syncfs, umask, mount, umount2]
+default_category: other

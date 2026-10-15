@@ -1,0 +1,6 @@
+# Training run: normal workloads only (no anomalies).
+schedule:
+  - {name: cpu_workload,   kind: normal, duration: 40, intensity: medium, start_after: 0}
+  - {name: mixed_workload, kind: normal, duration: 40, intensity: medium, start_after: 0}
+  - {name: io_workload,    kind: normal, duration: 40, intensity: low,    start_after: 0}
+  - {name: memory_workload, kind: normal, duration: 40, intensity: low,   start_after: 0}

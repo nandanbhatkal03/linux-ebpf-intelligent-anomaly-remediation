@@ -1,0 +1,13 @@
+build/
+ebpf/headers/vmlinux.h
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+datasets/raw/local/*
+datasets/features/*
+datasets/labels/*
+benchmarks/results/raw/*
+ml/models/*
+!.gitkeep

@@ -1,0 +1,17 @@
+# system packages (Ubuntu 22.04 / 24.04)
+clang
+llvm
+libbpf-dev
+libelf-dev
+zlib1g-dev
+make
+gcc
+pkg-config
+linux-libc-dev
+linux-tools-common
+linux-tools-generic
+stress-ng
+sysbench
+fio
+strace
+python3-pip

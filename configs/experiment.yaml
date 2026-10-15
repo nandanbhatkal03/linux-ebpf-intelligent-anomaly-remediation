@@ -1,0 +1,3 @@
+window_ms_candidates: [100, 500, 1000, 5000]
+process_counts: [1, 5, 10, 25, 50]
+overhead_trials: 5

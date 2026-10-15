@@ -1,0 +1,16 @@
+metric,config,mean,std,count,overhead_pct
+cpu_seconds,baseline,5.122,0.108,5,0.0
+cpu_seconds,ebpf_full,5.115,0.051,5,-0.148
+cpu_seconds,ebpf_process_resource,5.18,0.214,5,1.137
+cpu_seconds,ebpf_syscall,5.288,0.249,5,3.244
+cpu_seconds,proc_polling,5.327,0.201,5,3.99
+io_ns_per_read,baseline,565.53,31.739,5,0.0
+io_ns_per_read,ebpf_full,693.788,42.904,5,22.679
+io_ns_per_read,ebpf_process_resource,552.608,28.752,5,-2.285
+io_ns_per_read,ebpf_syscall,712.372,78.517,5,25.965
+io_ns_per_read,proc_polling,559.896,46.475,5,-0.996
+sys_ns_per_call,baseline,254.006,25.345,5,0.0
+sys_ns_per_call,ebpf_full,366.444,12.875,5,44.266
+sys_ns_per_call,ebpf_process_resource,242.634,18.526,5,-4.477
+sys_ns_per_call,ebpf_syscall,367.972,15.745,5,44.867
+sys_ns_per_call,proc_polling,241.996,5.713,5,-4.728

@@ -1,0 +1,1 @@
+monitors: {syscalls: true, process: true, resource: true}
