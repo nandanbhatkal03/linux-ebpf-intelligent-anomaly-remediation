@@ -1,6 +1,6 @@
-# linux-ebpf-intelligent-anomaly-remediation
+# Intelligent Linux Kernel Anomaly Detection and Automated Process Remediation using eBPF and Machine Learning
 
-Open-source Linux runtime framework: **eBPF kernel telemetry -> behavioural features -> anomaly detection -> (Phase-II) policy-controlled process remediation**, with overhead measured at every stage. MCSP34 (Phase-I) -> MCSP41 (Phase-II).
+Open-source Linux runtime framework: **eBPF kernel telemetry -> behavioural features -> anomaly detection -> (Phase-II) policy-controlled process remediation**, with overhead measured at every stage. Phase-I -> Phase-II.
 
 ## Status
 | Layer | Phase-I | Notes |
