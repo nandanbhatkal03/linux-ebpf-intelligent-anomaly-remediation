@@ -41,15 +41,16 @@ def restrict(pid: int, nice: int = 19) -> tuple[bool, str]:
 
 
 def unrestrict(pid: int) -> tuple[bool, str]:
+    saved = list(_orig_nice.items())
     n = 0
-    for t, old in list(_orig_nice.items()):
+    for t, old in saved:
         try:
             os.setpriority(os.PRIO_PROCESS, t, old)
             n += 1
         except OSError:
             pass
         _orig_nice.pop(t, None)
-    return True, f"restored {n} threads"
+    return n == len(saved), f"restored {n}/{len(saved)} threads"
 
 
 def _signal_tree(pid: int, sig) -> int:

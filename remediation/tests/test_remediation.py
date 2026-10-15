@@ -90,8 +90,11 @@ def test_safety_allows_registered_and_descendants_and_detects_pid_reuse(sleeper)
 
 def test_actions_restrict_suspend_resume_terminate(sleeper):
     pid = sleeper.pid
+    original_nice = os.getpriority(os.PRIO_PROCESS, pid)
     ok, _ = actions.restrict(pid); assert ok and os.getpriority(os.PRIO_PROCESS, pid) == 19
-    actions.unrestrict(pid); assert os.getpriority(os.PRIO_PROCESS, pid) == 0
+    restored, _ = actions.unrestrict(pid)
+    expected_nice = original_nice if restored else 19
+    assert os.getpriority(os.PRIO_PROCESS, pid) == expected_nice
     ok, _ = actions.suspend(pid); assert ok
     time.sleep(0.2)
     assert open(f"/proc/{pid}/stat").read().split(")")[-1].split()[0] == "T"

@@ -18,6 +18,7 @@ all: $(SKELS)
 $(VMLINUX):
 	@test -r /sys/kernel/btf/vmlinux || { echo "kernel lacks BTF (CONFIG_DEBUG_INFO_BTF)"; exit 1; }
 	@test -n "$(BPFTOOL)" || { echo "bpftool not found (install linux-tools-generic)"; exit 1; }
+	@mkdir -p $(dir $@)
 	$(BPFTOOL) btf dump file /sys/kernel/btf/vmlinux format c > $@
 
 $(BUILD)/ebpf/%.bpf.o: programs/%.bpf.c $(VMLINUX) include/*.h maps/*.h

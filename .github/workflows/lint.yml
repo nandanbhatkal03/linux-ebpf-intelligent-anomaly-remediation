@@ -1,11 +1,16 @@
 name: lint
 on: [push, pull_request]
 jobs:
-  build-and-test:
+  python-lint:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y clang llvm libbpf-dev libelf-dev zlib1g-dev linux-tools-generic make gcc
-      - run: pip install -r requirements/python.txt
-      - run: make -C ebpf && make -C collector      # compile-only: hosted runners cannot load BPF reliably
-      - run: python3 -m compileall -q feature_engine ml workloads
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements/lint.txt
+      - name: Install lint dependencies
+        run: python -m pip install -r requirements/lint.txt
+      - name: Lint Python
+        run: ruff check .

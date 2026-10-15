@@ -42,3 +42,10 @@ Workloads are benign stress generators with hard caps; the runner executes only 
 
 ## Documents
 `docs/phase1/DOCUMENT_CORRECTIONS.md` lists the errors found in the supplied package and papers. Other design docs sit beside it.
+
+## Development checks
+```bash
+python3 -m pip install -r requirements/lint.txt
+ruff check .
+python3 -m pytest -q
+```
